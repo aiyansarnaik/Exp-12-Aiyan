@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Resume Generator</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f2f2f2;
+            padding: 20px;
+        }
+
+        .box {
+            width: 60%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: black;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #resume {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h2>Enter Your Details</h2>
+        <input id="name" placeholder="Enter Name">
+        <input id="email" placeholder="Enter Email">
+        <input id="phone" placeholder="Enter Phone">
+
+        <textarea id="skills" placeholder="Enter Skills (comma separated)"></textarea>
+        <textarea id="education" placeholder="Enter Education"></textarea>
+        <textarea id="projects" placeholder="Enter Projects"></textarea>
+
+        <button onclick="generate()">Generate Resume</button>
+
+        <div id="resume"></div>
+    </div>
+
+    <script>
+        function generate() {
+            let name = document.getElementById("name").value; let email = document.getElementById("email").value; let phone = document.getElementById("phone").value;
+            let skills = document.getElementById("skills").value.split(",");
+            let education = document.getElementById("education").value; let projects =
+                document.getElementById("projects").value.split(",");
+
+            document.getElementById("resume").innerHTML = "<h2>" + name + "</h2>" +
+                "<p>Email: " + email + "</p>" +
+
+                "<p>Phone: " + phone + "</p>" +
+                "<h3>Skills</h3><ul>" + skills.map(s => "<li>" + s + "</li>").join("") + "</ul>" +
+                "<h3>Education</h3><p>" + education + "</p>" +
+                "<h3>Projects</h3><ul>" + projects.map(p => "<li>" + p + "</li>").join("") + "</ul>";
+        }
+    </script>
+</body>
+
+</html>
